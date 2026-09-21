@@ -1,24 +1,18 @@
-name: Build Nebula Client
-
+name: Build
 on: [push, workflow_dispatch]
-
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v3
-
-    - name: Configure CMake
+    - name: Config
       run: cmake -B build -A x64
-
-    - name: Build Project
+    - name: Compile
       run: cmake --build build --config Release
-
-    - name: Upload Artifacts
+    - name: Out
       uses: actions/upload-artifact@v3
       with:
-        name: Nebula-Client-Files
+        name: Nebula-Files
         path: |
           build/Release/NebulaInjector.exe
           build/Release/NebulaClient.dll
